@@ -12,6 +12,12 @@ resource "aws_s3_bucket" "example" {
   tags   = local.common_tags
 }
 
+# Import existing bucket created via CLI into Terraform state
+import {
+  to = aws_s3_bucket.pipeline_test
+  id = "jt-test-bucket-pipeline-000000"
+}
+
 # jt-test-bucket-pipeline-000000
 resource "aws_s3_bucket" "pipeline_test" {
   bucket = "jt-test-bucket-pipeline-000000"
